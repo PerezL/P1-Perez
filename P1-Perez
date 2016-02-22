@@ -1,0 +1,36 @@
+float x,y;
+
+float sunX = 100;
+float sunY = random(0,220);
+
+float speed = 0.5;
+
+void setup() {
+  size(640,320);
+}
+
+void draw() {
+  fill(10,85,255);
+  rect(0,0,640,220);        // Sky
+  fill(150,255,15);
+  rect(0,220,640,320);      // Floor
+  
+  // Sun
+  fill(255,255,10);
+  ellipse(sunX,sunY,20,20);
+  
+  // Tree
+  fill(175,155,15);
+  rect(100,160,20,60);      // trunk
+  fill(15,255,15);
+  ellipse(110,145,50,50);   // leaves
+  
+  // House
+  fill(255,15,15);
+  rect(300,160,100,60);    // 
+  
+  
+  // Movement sun
+  sunX = sunX + speed;
+  
+}
