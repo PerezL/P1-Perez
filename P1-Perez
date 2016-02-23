@@ -1,7 +1,7 @@
 float sunX = 100;
 float sunY = random(10, 210);
 
-float x=400, y=200, h=100, w=100;
+float xBuddy=400, yBuddy=200, hBuddy=100, wBuddy=100;
 
 float speed = 0.5;
 
@@ -48,13 +48,13 @@ void draw() {
 
   // Creature
   fill(200, 255, 180);
-  ellipse(x, y, h, w);            // head
-  ellipse(x+20, y-10, h/4, h/4);  // eye
-  line (x-25, y-10, x-5, y-10);   // eye
-  triangle(x-15, y+20, x, y+5, x+15, y+20); // nose
-  rect(x-50, y+50, 100, 30);     // body
-  line(x-30, y+80, x-30, y+100); // leg
-  line(x+30, y+80, x+30, y+100); // leg
+  ellipse(xBuddy, yBuddy, hBuddy, wBuddy);            // head
+  ellipse(xBuddy+20, yBuddy-10, hBuddy/4, hBuddy/4);  // eye
+  line (xBuddy-25, yBuddy-10, xBuddy-5, yBuddy-10);   // eye
+  triangle(xBuddy-15, yBuddy+20, xBuddy, yBuddy+5, xBuddy+15, yBuddy+20); // nose
+  rect(xBuddy-50, yBuddy+50, 100, 30);     // body
+  line(xBuddy-30, yBuddy+80, xBuddy-30, yBuddy+100); // leg
+  line(xBuddy+30, yBuddy+80, xBuddy+30, yBuddy+100); // leg
 
 
   // Movement sun
@@ -68,11 +68,11 @@ void draw() {
   ellipse(goldX, goldY, goldW, goldH);
 
   // Movement creature to the gold
-  x =  x  +  (goldX-x) / 15;
-  y =  y  +  (goldY-y) / 15;
+  xBuddy =  xBuddy  +  (goldX-xBuddy) / 15;
+  yBuddy =  yBuddy  +  (goldY-yBuddy) / 15;
 
   // Moving gold
-  if (dist(goldX, goldY, x, y) < 10) {
+  if (dist(goldX, goldY, xBuddy, yBuddy) < 10) {
     goldX = random(1, 960);
     goldY = random(1, 640);
     score += 100;
@@ -86,7 +86,7 @@ void draw() {
   fill(0);
   text( "Perez Loic", 15, 15);
   text( "Project #1", 15, 30);
-  text("Buddy", x-20, y+70);   // Hero`s name
+  text("Buddy", xBuddy-20, yBuddy+70);   // Hero`s name
   text("Score:" + score, 15, 45);
 }
 
