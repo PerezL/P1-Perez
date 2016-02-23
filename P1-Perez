@@ -1,19 +1,25 @@
-float x,y;
-
 float sunX = 100;
-float sunY = random(0,220);
+float sunY = random(10,210);
+
+float x=400,y=200,h=100,w=100;
 
 float speed = 0.5;
 
+float goldX = 300,goldY = 300, goldW = 15, goldH = 15;  
+
+float point;
+
+int score = 0;
+
 void setup() {
-  size(640,320);
+  size(960,640);
 }
 
 void draw() {
   fill(10,85,255);
-  rect(0,0,640,220);        // Sky
+  rect(0,0,960,220);        // Sky
   fill(150,255,15);
-  rect(0,220,640,320);      // Floor
+  rect(0,220,960,640);      // Floor
   
   // Sun
   fill(255,255,10);
@@ -27,10 +33,56 @@ void draw() {
   
   // House
   fill(255,15,15);
-  rect(300,160,100,60);    // 
+  rect(200,160,100,60);  
+  triangle(200,160,250,120,300,160); // Roof
+  fill(175,155,15);
+  rect(210,170,30,20);               // Window 1
+  line(225,170,225,190);
+  line(210,180,240,180);
+  rect(235,140,30,15);               // Window 2
+  line(250,140,250,155);
+  line(235,148,265,148);
+  rect(260,175,30,45);               // Door
+  fill(0);
+  ellipse(285,200,5,5);              // `Door opening`
+  
+    // Creature
+  fill(200,255,180);
+  ellipse(x,y,h,w);            // head
+  ellipse(x+20,y-10,h/4,h/4);  // eye
+  line (x-25,y-10,x-5,y-10);   // eye
+  triangle(x-15,y+20,x,y+5,x+15,y+20); // nose
+  rect(x-50,y+50,100,30);     // body
+  line(x-30,y+80,x-30,y+100); // leg
+  line(x+30,y+80,x+30,y+100); // leg
   
   
   // Movement sun
   sunX = sunX + speed;
+  
+  // Reset sun
+  if (sunX > width) sunX = 0;
+  
+  // Gold
+  fill(255,255,15);
+  ellipse(goldX,goldY,goldW,goldH);
+  
+  // Movement creature to the gold
+  x =  x  +  (goldX-x) / 15;
+  y =  y  +  (goldY-y) / 15;
+  
+  // Moving gold
+  if (dist(goldX,goldY,x,y) < 10) {
+  goldX = random(1,960);
+  goldY = random(1,640);
+  score += 100;
+  }
+  
+  // Text
+  fill(0);
+  text( "Perez Loic" ,15,15);
+  text( "Project #1" ,15,30);
+  text("Buddy",x-20,y+70);   // Hero`s name
+  text("Score:" + score,15,45);
   
 }
