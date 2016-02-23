@@ -88,5 +88,6 @@ void draw() {
   text( "Project #1", 15, 30);
   text("Buddy", xBuddy-20, yBuddy+70);   // Hero`s name
   text("Score:" + score, 15, 45);
+
 }
 
