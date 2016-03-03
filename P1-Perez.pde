@@ -6,33 +6,25 @@ float goldX = 400, goldY = 250, goldW = 25, goldH = 15;
 float point;
 int   score = 0;
 
+
 void setup() {
   size(960, 640);
 }
 
 void draw() {
   scene();
+  text();
   creature();
   gold();
- 
-  // Reduce the score
-  frameRate(30);
-  score -= 1;
-
-  // Text
-  fill(0);
-  text( "Perez Loic", 15, 15);
-  text( "Project #1", 15, 30);
-  text("Buddy", xBuddy-20, yBuddy+70);   // Hero`s name
-  text("Score:" + score, 15, 45);
+  score();
 }
 
-  void scene() {
+void scene() {
   fill(10, 85, 255);
   rect(0, 0, 960, 220);        // Sky
   fill(150, 255, 15);
   rect(0, 220, 960, 640);      // Floor
-  
+
   // Sun
   fill(255, 255, 10);
   ellipse(sunX, sunY, 20, 20);
@@ -57,15 +49,24 @@ void draw() {
   rect(260, 175, 30, 45);               // Door
   fill(0);
   ellipse(285, 200, 5, 5);              // `Door opening`
-  
+
   // Movement sun
   sunX = sunX + speed;
 
   // Reset sun
-  if (sunX > width) sunX = 0;  
+  if (sunX > width) sunX = 0;
 }
-  
-  void creature() {
+
+void text() {
+  // Text
+  fill(0);
+  text( "Perez Loic", 15, 15);
+  text( "Project #1", 15, 30);
+  text("Buddy", xBuddy-20, yBuddy+70);   // Hero`s name
+  text("Score:" + score, 15, 45);
+}
+
+void creature() {
   // Creature
   fill(200, 255, 180);
   ellipse(xBuddy, yBuddy, hBuddy, wBuddy);            // head
@@ -93,4 +94,11 @@ void gold() {
     score += 100;
   }
 }
+void score() {
+  // Reduce the score
+  frameRate(30);
+  score -= 1;
+}
+
+
 
